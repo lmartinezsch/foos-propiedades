@@ -1,18 +1,26 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b">
+    <header className="sticky top-0 z-50 w-full border-b bg-foos-blue">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <div className="md:flex-1">
-          <Link href="/" className="flex items-center md:justify-start justify-center">
+          <Link
+            href="/"
+            className="flex items-center md:justify-start justify-center"
+          >
             <Image
-              src="/placeholder.svg?height=40&width=150"
+              src="/juan-foos-logo.jpg?height=40&width=150"
               alt="Logo"
               width={150}
               height={40}
@@ -20,17 +28,17 @@ export default function Header() {
             />
           </Link>
         </div>
-        <nav className="hidden md:flex gap-6 flex-1 justify-end">
-          <Link href="#" className="text-sm font-medium hover:underline">
+        <nav className="hidden md:flex gap-6 flex-1 justify-end text-white">
+          <Link href="#" className="text-sm font-medium hover:text-foos-yellow">
             Quienes somos
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline">
+          <Link href="#" className="text-sm font-medium hover:text-foos-yellow">
             Tasaciones
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline">
+          <Link href="#" className="text-sm font-medium hover:text-foos-yellow">
             Propiedades
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline">
+          <Link href="#" className="text-sm font-medium hover:text-foos-yellow">
             Contacto
           </Link>
         </nav>
@@ -87,5 +95,5 @@ export default function Header() {
         </Sheet>
       </div>
     </header>
-  )
+  );
 }

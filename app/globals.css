@@ -41,6 +41,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --color-foos-blue: #112230;
+  --color-foos-yellow: #ca942b;
 }
 
 :root {
@@ -118,5 +121,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .global-bg {
+    background-color: #112230;
   }
 }
