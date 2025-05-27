@@ -1,9 +1,15 @@
-import { Search } from "lucide-react"
+import { Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
 
 export default function SearchSection() {
   return (
@@ -17,8 +23,12 @@ export default function SearchSection() {
       />
       <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="max-w-3xl mx-auto text-center mb-8">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Encontrá tu próxima propiedad</h1>
-          <p className="text-lg md:text-xl text-white">Miles de propiedades te están esperando</p>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Encontrá tu próxima propiedad
+          </h1>
+          <p className="text-lg md:text-xl text-white">
+            Miles de propiedades te están esperando
+          </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 max-w-[980px] mx-auto">
@@ -29,10 +39,10 @@ export default function SearchSection() {
               <TabsTrigger value="temporal">Temporal</TabsTrigger>
             </TabsList>
             <TabsContent value="alquiler" className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
                 <div className="md:col-span-4">
                   <Select>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Tipo de propiedad" />
                     </SelectTrigger>
                     <SelectContent>
@@ -117,5 +127,5 @@ export default function SearchSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
