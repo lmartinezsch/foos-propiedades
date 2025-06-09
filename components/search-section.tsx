@@ -60,7 +60,7 @@ export default function SearchSection() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <Button className="w-full">
+                  <Button className="w-full h-full cursor-pointer">
                     <Search className="h-4 w-4 mr-2" />
                     Buscar
                   </Button>
@@ -68,10 +68,10 @@ export default function SearchSection() {
               </div>
             </TabsContent>
             <TabsContent value="venta" className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
                 <div className="md:col-span-4">
                   <Select>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Tipo de propiedad" />
                     </SelectTrigger>
                     <SelectContent>
@@ -89,7 +89,7 @@ export default function SearchSection() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <Button className="w-full">
+                  <Button className="w-full h-full cursor-pointer">
                     <Search className="h-4 w-4 mr-2" />
                     Buscar
                   </Button>
@@ -97,16 +97,18 @@ export default function SearchSection() {
               </div>
             </TabsContent>
             <TabsContent value="temporal" className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
                 <div className="md:col-span-4">
                   <Select>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Tipo de propiedad" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="casa">Casa</SelectItem>
                       <SelectItem value="departamento">Departamento</SelectItem>
-                      <SelectItem value="cabaña">Cabaña</SelectItem>
+                      <SelectItem value="ph">PH</SelectItem>
+                      <SelectItem value="terreno">Terreno</SelectItem>
+                      <SelectItem value="local">Local</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -116,7 +118,7 @@ export default function SearchSection() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <Button className="w-full">
+                  <Button className="w-full h-full cursor-pointer">
                     <Search className="h-4 w-4 mr-2" />
                     Buscar
                   </Button>

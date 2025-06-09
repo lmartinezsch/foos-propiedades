@@ -39,7 +39,7 @@ export default function Footer() {
                   href="mailto:foosjuan@gmail.com"
                   className="text-gray-300 hover:text-white"
                 >
-                  foosjuan@gmail.com
+                  juanfoospropiedades@gmail.com
                 </Link>
               </li>
             </ul>
