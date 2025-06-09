@@ -9,13 +9,14 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Nosotros</h3>
             <p className="text-gray-300 mb-4">
-              Somos una inmobiliaria con más de 20 años de experiencia en el
-              mercado. Nos especializamos en la compra, venta y alquiler de
-              propiedades en toda la zona.
-            </p>
-            <p className="text-gray-300">
-              Nuestro objetivo es brindar un servicio personalizado y de
-              calidad, asesorando a nuestros clientes en cada paso del proceso.
+              Somos una inmobiliaria joven y moderna que busca dar respuesta a
+              los desafíos del siglo XXI en nuestro rubro. <br />
+              <br />
+              Podemos ayudarte si necesitas comprar, vender o alquilar una
+              propiedad. <br />
+              Tambien podemos asesorarte en cuanto a posibilidades de inversión,
+              créditos y toda otra herramienta disponible como los desarrollos
+              inmobiliarios, las tasaciones y mucho mas.
             </p>
           </div>
 
@@ -25,20 +26,20 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 text-gray-400" />
                 <span className="text-gray-300">
-                  Av. Corrientes 1234, CABA, Argentina
+                  Boulevard Buenos Aires Nº 1543, Luis Guillon, Buenos Aires.
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-gray-400" />
-                <span className="text-gray-300">(011) 4567-8900</span>
+                <span className="text-gray-300">(11) 5935-9185</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-gray-400" />
                 <Link
-                  href="mailto:info@inmobiliaria.com"
+                  href="mailto:foosjuan@gmail.com"
                   className="text-gray-300 hover:text-white"
                 >
-                  info@inmobiliaria.com
+                  foosjuan@gmail.com
                 </Link>
               </li>
             </ul>
@@ -47,16 +48,18 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-2">
                 Horarios de atención
               </h4>
-              <p className="text-gray-300">Lunes a Viernes: 9:00 a 18:00</p>
-              <p className="text-gray-300">Sábados: 9:00 a 13:00</p>
+              <p className="text-gray-300">
+                Lunes a Viernes: 10:00 a 13:00 y de 16:00 a 18:00
+              </p>
+              <p className="text-gray-300">Sábados: 10:00 a 13:00</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
           <p>
-            © {new Date().getFullYear()} Inmobiliaria. Todos los derechos
-            reservados.
+            © {new Date().getFullYear()} Juan Foos Propieades. Todos los
+            derechos reservados.
           </p>
         </div>
       </div>
