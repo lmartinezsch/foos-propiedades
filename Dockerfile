@@ -42,16 +42,3 @@ USER nextjs
 
 # Comando de inicio en producción
 CMD npm start
-
-# Etapa de desarrollo (opcional)
-FROM base as dev
-
-WORKDIR /app
-
-ENV NODE_ENV=development
-
-RUN npm install
-
-COPY . .
-
-CMD npm run dev
