@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b bg-foos-blue">
+      <header className="sticky top-0 z-50 w-full bg-foos-blue border-b">
         <div className="container max-w-screen-lg mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="md:flex-1">
             <Link
@@ -36,7 +36,7 @@ export default function Header() {
               />
             </Link>
           </div>
-          <nav className="hidden md:flex gap-6 flex-1 justify-end">
+          <nav className="hidden md:flex gap-6 flex-1 justify-end text-white">
             <Link
               href="#"
               className="text-sm font-medium hover:text-foos-yellow"
@@ -65,7 +65,7 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden relative z-[60] text-white hover:text-gray-200"
+            className="md:hidden relative z-[60]"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
@@ -80,21 +80,10 @@ export default function Header() {
 
       {/* Full Screen Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-[#112230] z-[55] transition-all duration-300 ease-in-out md:hidden ${
+        className={`fixed inset-0 bg-black z-[55] transition-all duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="absolute top-6 right-6">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-white hover:text-gray-300 h-12 w-12"
-            onClick={closeMenu}
-          >
-            <X className="h-8 w-8" />
-            <span className="sr-only">Cerrar menú</span>
-          </Button>
-        </div>
         <div className="flex flex-col justify-center items-start h-full px-8">
           <nav className="space-y-8">
             <Link
