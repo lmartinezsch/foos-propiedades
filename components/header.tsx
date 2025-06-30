@@ -65,7 +65,7 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden relative z-[60]"
+            className="md:hidden relative z-[60] text-white hover:text-gray-200"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
@@ -80,10 +80,21 @@ export default function Header() {
 
       {/* Full Screen Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-black z-[55] transition-all duration-300 ease-in-out md:hidden ${
+        className={`fixed inset-0 bg-[#112230] z-[55] transition-all duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
+        <div className="absolute top-6 right-6">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white hover:text-gray-300 h-12 w-12"
+            onClick={closeMenu}
+          >
+            <X className="h-8 w-8" />
+            <span className="sr-only">Cerrar menú</span>
+          </Button>
+        </div>
         <div className="flex flex-col justify-center items-start h-full px-8">
           <nav className="space-y-8">
             <Link
