@@ -14,14 +14,35 @@ import { Input } from "@/components/ui/input";
 export default function SearchSection() {
   return (
     <section className="relative w-full">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/placeholder.svg?height=600&width=1200')",
-          filter: "brightness(0.7)",
-        }}
-      />
-      <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">
+      <div className="absolute inset-0">
+        {/* Mobile Background */}
+        <div
+          className="absolute inset-0 bg-cover bg-bottom bg-no-repeat sm:hidden"
+          style={{
+            backgroundImage: "url('/bg-home.jpg')",
+            filter: "brightness(0.7)",
+          }}
+        />
+
+        {/* Tablet Background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden sm:block lg:hidden"
+          style={{
+            backgroundImage: "url('/bg-home.jpg?height=1200&width=960')",
+            filter: "brightness(0.7)",
+          }}
+        />
+
+        {/* Desktop Background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden lg:block"
+          style={{
+            backgroundImage: "url('/bg-home.jpg?height=1920&width=10800')",
+            filter: "brightness(0.7)",
+          }}
+        />
+      </div>
+      <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32 lg:min-h-screen">
         <div className="max-w-3xl mx-auto text-center mb-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Encontrá tu próxima propiedad
@@ -31,7 +52,10 @@ export default function SearchSection() {
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 max-w-[980px] mx-auto">
+        <div
+          className="rounded-lg shadow-lg p-4 md:p-6 max-w-[980px] mx-auto"
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+        >
           <Tabs defaultValue="alquiler" className="w-full">
             <TabsList className="grid grid-cols-3 mb-6">
               <TabsTrigger value="alquiler">Alquiler</TabsTrigger>
