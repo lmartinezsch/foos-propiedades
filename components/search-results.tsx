@@ -25,24 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-interface Property {
-  id: number;
-  title: string;
-  price: string;
-  priceValue: number;
-  location: string;
-  bedrooms: number;
-  bathrooms: number;
-  parking: number;
-  area: number;
-  type: string;
-  operation: string;
-  image: string;
-  features: string[];
-  description: string;
-  createdAt: string;
-}
+import { getProperties, IProperty } from "../app/api/properties/getProperties";
 
 interface SearchFilters {
   operation: string;
@@ -57,14 +40,14 @@ interface SearchFilters {
 }
 
 interface ApiResponse {
-  properties: Property[];
+  properties: IProperty[];
   total: number;
   page: number;
   totalPages: number;
 }
 
 export default function SearchResults() {
-  const [properties, setProperties] = useState<Property[]>([]);
+  const [properties, setProperties] = useState<IProperty[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -73,7 +56,7 @@ export default function SearchResults() {
   const [sortBy, setSortBy] = useState("relevancia");
 
   const [filters, setFilters] = useState<SearchFilters>({
-    operation: "alquiler",
+    operation: "",
     propertyType: "",
     location: "",
     minPrice: "",
@@ -95,154 +78,14 @@ export default function SearchResults() {
   ) => {
     setLoading(true);
 
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    // Mock data with numeric prices and dates
-    const mockProperties: Property[] = [
-      {
-        id: 1,
-        title: "Departamento 2 ambientes en Palermo",
-        price: "$85.000",
-        priceValue: 85000,
-        location: "Palermo, CABA",
-        bedrooms: 1,
-        bathrooms: 1,
-        parking: 0,
-        area: 45,
-        type: "Departamento",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Balcón", "Luminoso", "Amoblado"],
-        description: "Hermoso departamento en el corazón de Palermo",
-        createdAt: "2024-01-15",
-      },
-      {
-        id: 2,
-        title: "Casa 3 dormitorios con jardín",
-        price: "$120.000",
-        priceValue: 120000,
-        location: "Villa Urquiza, CABA",
-        bedrooms: 3,
-        bathrooms: 2,
-        parking: 1,
-        area: 120,
-        type: "Casa",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Jardín", "Parrilla", "Cochera"],
-        description: "Casa familiar con amplio jardín y parrilla",
-        createdAt: "2024-01-10",
-      },
-      {
-        id: 3,
-        title: "PH 2 dormitorios reciclado",
-        price: "$95.000",
-        priceValue: 95000,
-        location: "San Telmo, CABA",
-        bedrooms: 2,
-        bathrooms: 1,
-        parking: 0,
-        area: 75,
-        type: "PH",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Reciclado", "Terraza", "Luminoso"],
-        description: "PH completamente reciclado con terraza propia",
-        createdAt: "2024-01-20",
-      },
-      {
-        id: 4,
-        title: "Departamento con vista al río",
-        price: "$180.000",
-        priceValue: 180000,
-        location: "Puerto Madero, CABA",
-        bedrooms: 2,
-        bathrooms: 2,
-        parking: 1,
-        area: 90,
-        type: "Departamento",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Vista al río", "Amenities", "Cochera"],
-        description: "Moderno departamento con vista panorámica",
-        createdAt: "2024-01-25",
-      },
-      {
-        id: 5,
-        title: "Casa quinta con pileta",
-        price: "$150.000",
-        priceValue: 150000,
-        location: "Pilar, Buenos Aires",
-        bedrooms: 4,
-        bathrooms: 3,
-        parking: 2,
-        area: 200,
-        type: "Casa",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Pileta", "Quincho", "Parque"],
-        description: "Amplia casa quinta ideal para familias",
-        createdAt: "2024-01-05",
-      },
-      {
-        id: 6,
-        title: "Loft moderno en Barracas",
-        price: "$75.000",
-        priceValue: 75000,
-        location: "Barracas, CABA",
-        bedrooms: 1,
-        bathrooms: 1,
-        parking: 0,
-        area: 55,
-        type: "Loft",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Moderno", "Loft", "Céntrico"],
-        description: "Loft de diseño en zona en desarrollo",
-        createdAt: "2024-01-30",
-      },
-      {
-        id: 7,
-        title: "Departamento en Belgrano",
-        price: "$110.000",
-        priceValue: 110000,
-        location: "Belgrano, CABA",
-        bedrooms: 2,
-        bathrooms: 2,
-        parking: 1,
-        area: 80,
-        type: "Departamento",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Balcón", "Luminoso", "Cochera"],
-        description: "Excelente departamento en Belgrano",
-        createdAt: "2024-02-01",
-      },
-      {
-        id: 8,
-        title: "Casa en Caballito",
-        price: "$90.000",
-        priceValue: 90000,
-        location: "Caballito, CABA",
-        bedrooms: 3,
-        bathrooms: 2,
-        parking: 0,
-        area: 100,
-        type: "Casa",
-        operation: "Alquiler",
-        image: "/placeholder.svg?height=300&width=400",
-        features: ["Patio", "Parrilla", "Luminosa"],
-        description: "Casa con patio en Caballito",
-        createdAt: "2024-01-12",
-      },
-    ];
+    const properties = await getProperties();
 
     // Filter mock data based on all filters
-    const filteredProperties = mockProperties.filter((property) => {
+    const filteredProperties = properties.filter((property: IProperty) => {
       // Operation filter
       if (
         searchFilters.operation &&
+        searchFilters.operation !== "todos" &&
         property.operation.toLowerCase() !==
           searchFilters.operation.toLowerCase()
       )
@@ -315,7 +158,8 @@ export default function SearchResults() {
     });
 
     // Duplicate for pagination simulation
-    const allProperties = [...sortedProperties, ...sortedProperties];
+    //const allProperties = [...sortedProperties, ...sortedProperties];
+    const allProperties = sortedProperties;
     const itemsPerPage = 6;
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -378,6 +222,7 @@ export default function SearchResults() {
                     <SelectValue placeholder="Operación" />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="todos">Todos</SelectItem>
                     <SelectItem value="alquiler">Alquiler</SelectItem>
                     <SelectItem value="venta">Venta</SelectItem>
                     <SelectItem value="temporal">Temporal</SelectItem>
@@ -570,7 +415,7 @@ export default function SearchResults() {
                   >
                     <Heart className="h-4 w-4" />
                   </Button>
-                  <Badge className="absolute top-2 left-2 bg-blue-600">
+                  <Badge className="absolute top-2 left-2 bg-foos-yellow">
                     {property.operation}
                   </Badge>
                 </div>
@@ -580,7 +425,7 @@ export default function SearchResults() {
                       {property.title}
                     </h3>
                   </div>
-                  <p className="text-2xl font-bold text-blue-600 mb-2">
+                  <p className="text-2xl font-bold text-foos-yellow mb-2">
                     {property.price}
                   </p>
                   <div className="flex items-center text-gray-600 mb-3">
